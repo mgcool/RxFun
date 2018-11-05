@@ -1,0 +1,54 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "nstv.rxfun"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "CONVERSION_SERVICE_BASE", '"https://min-api.cryptocompare.com/"'
+        buildConfigField "String", "COIN_SERVICE_BASE", '"https://www.cryptocompare.com/"'
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
+
+    implementation "androidx.annotation:annotation:${annotationVersion}"
+    implementation "androidx.appcompat:appcompat:${appCompatVersion}"
+    implementation "com.google.android.material:material:${materialVersion}"
+    implementation "androidx.cardview:cardview:${cardViewVersion}"
+    implementation "androidx.constraintlayout:constraintlayout:${constraintLayoutsVersion}"
+    implementation "com.squareup.picasso:picasso:${picassoVersion}"
+    implementation "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}"
+    implementation "io.reactivex.rxjava2:rxjava:${rxJavaVersion}"
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    implementation "com.squareup.retrofit2:retrofit:2.4.0"
+    implementation "com.squareup.retrofit2:converter-moshi:2.4.0"
+    implementation "com.squareup.moshi:moshi:1.5.0"
+
+    testImplementation "junit:junit:${junitVersion}"
+
+    androidTestImplementation("androidx.test.espresso:espresso-core:${espressoVersion}") {
+        exclude(group: 'com.google.code.findbugs', module: 'jsr305')
+    }
+    androidTestImplementation 'androidx.test:runner:1.0.2'
+}
