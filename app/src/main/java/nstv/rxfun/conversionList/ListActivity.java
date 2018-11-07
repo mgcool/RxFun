@@ -10,12 +10,15 @@ public class ListActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     ListAdapter adapter;
+    //TODO: add Disposable
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
         init();
+        loadData();
     }
 
     private void init() {
@@ -26,5 +29,15 @@ public class ListActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.list);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
+    }
+
+    private void loadData() {
+        //TODO: load list data
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //TODO: clean up disposable
     }
 }
