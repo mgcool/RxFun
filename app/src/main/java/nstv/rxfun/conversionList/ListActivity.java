@@ -1,10 +1,15 @@
 package nstv.rxfun.conversionList;
 
 import android.os.Bundle;
+import android.os.SystemClock;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import nstv.rxfun.R;
+import nstv.rxfun.data.model.Conversion;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ListActivity extends AppCompatActivity {
 
@@ -29,6 +34,15 @@ public class ListActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.list);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
+    }
+
+    private List<Conversion> getDummyData(String to) {
+        List<Conversion> items = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            items.add(new Conversion("Coin " + i, "", to, "", i % 2 - 1, i + "", i));
+        }
+        SystemClock.sleep(1000);
+        return items;
     }
 
     private void loadData() {

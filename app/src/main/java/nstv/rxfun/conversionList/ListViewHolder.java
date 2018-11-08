@@ -37,13 +37,17 @@ public class ListViewHolder extends RecyclerView.ViewHolder {
         textChange.setText(getFormattedChange(item.getChange(), item.getPriceDisplay()));
 
         //Bind Images
-        Picasso.with(itemView.getContext())
-                .load(item.getFromImageUrl())
-                .into(imageFrom);
+        if (item.getFromImageUrl() != null && !item.getFromImageUrl().isEmpty()) {
+            Picasso.with(itemView.getContext())
+                    .load(item.getFromImageUrl())
+                    .into(imageFrom);
+        }
 
-        Picasso.with(itemView.getContext())
-                .load(item.getToImageUrl())
-                .into(imageTo);
+        if (item.getToImageUrl() != null && !item.getToImageUrl().isEmpty()) {
+            Picasso.with(itemView.getContext())
+                    .load(item.getToImageUrl())
+                    .into(imageTo);
+        }
     }
 
     private SpannableString getFormattedChange(Double change, String price) {
